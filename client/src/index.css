@@ -1,0 +1,12 @@
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}

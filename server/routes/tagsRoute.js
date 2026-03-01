@@ -1,0 +1,39 @@
+const router = require("express").Router();
+const db = require("../models/");
+const postService = require("../services/postService");
+
+router.get("/:name/posts", async (req, res) => {
+  const name = req.params.name;
+  postService.getByTag(name).then((result) => {
+    res.status(result.status).json(result.data);
+  });
+});
+
+router.get("/", (req, res) => {
+  db.tag.findAll().then((result) => {
+    res.send(result);
+  });
+});
+
+router.post("/", (req, res) => {
+  const tag = req.body;
+  db.tag.create(tag).then((result) => {
+    res.send(result);
+  });
+});
+
+router.delete("/", (req, res) => {
+  const id = req.body.id;
+  if (!id) {
+    res.status(400).json("ID är obligatoriskt");
+  } else {
+    db.tag
+      .destroy({
+        where: { id: req.body.id },
+      })
+      .then((result) => {
+        res.json(`Taggen raderades ${result}`);
+      });
+  }
+});
+module.exports = router;
