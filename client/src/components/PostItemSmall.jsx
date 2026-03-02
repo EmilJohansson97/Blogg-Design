@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import placeHolderImage from "../assets/placeholder.png";
-import { Box } from "@mui/system";
+import { Box, minWidth } from "@mui/system";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 function PostItemSmall({ post }) {
@@ -27,7 +27,9 @@ function PostItemSmall({ post }) {
             </Typography>
           }
           subheader={`Skrivet: ${toRelativeDateString(post.createdAt)}`}
-          avatar={<UserItemSmall user={post.author} />}
+          avatar={
+            <UserItemSmall style={{ minWidth: "7rem" }} user={post.author} />
+          }
         />
         <CardMedia
           component="img"

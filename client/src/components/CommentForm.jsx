@@ -6,18 +6,19 @@ function CommentForm({ onSave }) {
   return (
     <form>
       <div>
-        Titel:{" "}
         <TextField
+          fullWidth
           value={comment.title}
           onChange={(e) => setComment({ ...comment, title: e.target.value })}
           label="Rubrik"
           name="title"
           id="title"
+          margin="normal"
         />
       </div>
       <div>
-        Innehåll:{" "}
         <TextField
+          fullWidth
           multiline
           minRows={3}
           value={comment.body}

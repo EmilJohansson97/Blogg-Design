@@ -8,6 +8,33 @@ import PostDetail from "./views/PostDetail.jsx";
 import Home from "./views/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { blueGrey, deepPurple, grey, red, teal } from "@mui/material/colors";
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    background: {
+      default: "#f3f3f3",
+      paper: grey[50],
+    },
+    primary: {
+      main: deepPurple[300],
+    },
+    secondary: {
+      main: blueGrey[500],
+    },
+    success: {
+      main: teal[700],
+    },
+    error: {
+      main: red[700],
+    },
+  },
+  typography: {
+    fontFamily: "Roboto, sans-serif",
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -44,7 +71,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CssBaseline />
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>,
 );

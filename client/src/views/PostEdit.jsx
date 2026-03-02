@@ -40,7 +40,10 @@ function PostEdit() {
   function onSave() {
     if (post.id === 0) {
       create(post).then((response) => {
-        navigate("/", { replace: true, state: response });
+        navigate("/", {
+          replace: true,
+          state: { message: `Inlägget ${response.title} skapades` },
+        });
       });
     } else {
       update(post).then((response) =>

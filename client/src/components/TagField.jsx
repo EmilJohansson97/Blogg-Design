@@ -1,18 +1,25 @@
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
 import { useState } from "react";
 
 function TagField({ onSave }) {
   const [tagString, setTagString] = useState("");
   return (
-    <>
+    <Box display="flex" alignItems="center" gap={2}>
       <TextField
+        sx={{ flex: 1 }}
         value={tagString}
         onChange={(e) => setTagString(e.target.value)}
         label="Taggar (ange flera separerade med kommatecken)"
         name="tags"
       />
-      <Button onClick={() => onSave(tagString)}>Lägg till taggar</Button>
-    </>
+      <Button
+        color="success"
+        variant="contained"
+        onClick={() => onSave(tagString)}
+      >
+        Lägg till taggar
+      </Button>
+    </Box>
   );
 }
 
